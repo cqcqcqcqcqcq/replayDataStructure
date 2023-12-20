@@ -36,8 +36,9 @@ int dynamicArrayInit(dynamicArray *pArray, int capacity)
     pArray->data = (ELEMENTTYPE *)malloc(sizeof(ELEMENTTYPE) * capacity);
     if (pArray->data == NULL)
     {
-        return  MALLOC_ERROR;
+        return  MALLOC_ERROR;                                                                                                                                                                                                                                                                                                                                                                                                                         
     }
+    
     /*清除脏数据*/
     memset(pArray->data, 0, sizeof(ELEMENTTYPE) * capacity);
     /*初始化动态数组的参数属性*/
@@ -55,7 +56,7 @@ int dynamicArrayInsertData(dynamicArray *pArray, ELEMENTTYPE val)
 
 
 /*动态数组扩容*/
-static expandDynamicCapacity(dynamicArray *pArray)
+static int expandDynamicCapacity(dynamicArray *pArray)                                                    
 {
     int ret = 0;
 
