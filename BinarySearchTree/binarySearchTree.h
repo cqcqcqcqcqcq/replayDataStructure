@@ -25,6 +25,6 @@ typedef struct BinarySearchTree
 int BinarySearchTreeInit(BinarySearchTree **pBstree);
 
 /*二叉搜索树的插入*/
-int BinarySearchTreeInsert(BinarySearchTree **pBstree, ELEMENTTYPE val);
+int BinarySearchTreeInsert(BinarySearchTree **pBstree, ELEMENTTYPE val, int (compareFunc)(ELEMENTTYPE val1, ELEMENTTYPE val2));
 
 #endif //__BINARY_SEARCH_TREE_H_
