@@ -38,6 +38,8 @@ static AVLTreeNode * bstreeNodePreDecessor(AVLTreeNode *node);
 static AVLTreeNode * bstreeNodeSuccessor(AVLTreeNode *node);
 /* 二叉搜索树删除指定的结点 */
 static int balanceBinarySearchTreeDeleteNode(BalanceBinarySearchTree *pBstree, AVLTreeNode *node);
+/* 添加结点之后要做的事情 */
+static int insertNodeAfter(AVLTreeNode *node);
 
 
 
@@ -173,7 +175,7 @@ static AVLTreeNode *createAVLTreeNewNode(ELEMENTTYPE val, AVLTreeNode *parent)
     /* 初始化根结点 */
     {
         newAVLNode->data = 0;
-        /*结点的高度为一*/
+        /* 结点的高度为1. */
         newAVLNode->height = 1;
         newAVLNode->left = NULL;
         newAVLNode->right = NULL;
@@ -207,6 +209,18 @@ static int compareFunc(ELEMENTTYPE val1, ELEMENTTYPE val2)
 }
 #endif
 
+/* 添加结点之后的操作. */
+static int insertNodeAfter(AVLTreeNode *node)
+{
+    int ret = 0;
+    /* todo... */
+    /* 更新高度... */
+
+    /* 调整平衡... */
+    return ret;
+}
+
+
 /* 二叉搜索树的插入 */
 int balanceBinarySearchTreeInsert(BalanceBinarySearchTree *pBstree, ELEMENTTYPE val)
 {
@@ -217,8 +231,8 @@ int balanceBinarySearchTreeInsert(BalanceBinarySearchTree *pBstree, ELEMENTTYPE 
     {
         /* 更新树的结点 */
         (pBstree->size)++;
-
         pBstree->root->data = val;
+        insertNodeAfter(pBstree->root);
         return ret;
     }
 
@@ -280,6 +294,9 @@ int balanceBinarySearchTreeInsert(BalanceBinarySearchTree *pBstree, ELEMENTTYPE 
         /* 挂在右子树 */
         parentNode->right = newAVLNode;
     }
+    /* 添加之后的调整 */
+    insertNodeAfter(newAVLNode);
+
 #if 0
     /* 新结点的parent指针赋值 */
     newAVLNode->parent = parentNode;
